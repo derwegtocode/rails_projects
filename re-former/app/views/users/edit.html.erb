@@ -1,0 +1,9 @@
+  <%= form_with model: @user do |form| %>
+    <%= form.label :username, "Changing your username?" %>
+    <%= form.text_field :username, placeholder: "Ok, it's time for a new identity" %>
+    <%= form.label :email, "Have a new email?" %>
+    <%= form.email_field :email, placeholder: "Don't forget to put it here." %>
+    <%= form.label :password, "I knew you'd forget that password!" %>
+    <%= form.password_field :password, placeholder: "Please write it down this time." %>
+    <%= form.submit "Update" %>
+  <% end %>
