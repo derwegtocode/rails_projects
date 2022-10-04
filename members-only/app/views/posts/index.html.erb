@@ -1,16 +1,33 @@
-<h1>My lips are sealed</h1>
+
+ <div class="d-flex align-items-center justify-content-center">
+  <h1 class="fs-1 fw-bold" >My lips are sealed</h1>
+</div>
+</br>
 <div class="d-flex align-items-center justify-content-center">
-  <ul>
+  <h3>Rules are simple: you get to read other people's secrets, 
+  but if you want to know who the author of the secret is 
+  or you want to share your own, you must create an account.</h3> 
+</div>
+</br>
+</br>
+</br>
+<div class="d-flex align-items-center justify-content-center">
+  <div class="container">
     <% @posts.each do |post| %>
-      <li>
-        <%= post.body %>
-        <%=  "shared by: "%>
-        <% if user_signed_in? %>
-          <%= post.user.email[/^[^@]*/] %>
-        <% else %>
-          <%= "Annonymous" %>
-        <% end %>
-      </li>
+      <div class="card border-light mb-3">
+        <div class="card-header fw-bold">
+          <% if user_signed_in? %>
+            <%= post.user.email[/^[^@]*/] %>
+          <% else %>
+            <%= "Annonymous" %>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            <%= post.body %>
+          </p>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>

@@ -7,8 +7,10 @@
   <% end %>
 
 <%= form_with model: @post, method: :post do |form| %>
-  <%= form.label :body, "Share your secret:"%>
-  <%= form.text_area :body, size: "70x10" %>
-  <%= form.submit "Share" %>
+  <div class="d-flex align-items-center justify-content-center flex-column">
+    <%= form.label :body, "Share your secret:"%><br/>
+    <%= form.text_area :body, size: "70x10" %><br/>
+    <%= form.submit "Share", class:"btn btn-light" %><br/>
+  </div>
 <% end %>
 
