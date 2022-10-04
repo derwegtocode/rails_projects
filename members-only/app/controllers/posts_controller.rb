@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :show]
 
   def new
     @post = Post.new
@@ -18,8 +18,13 @@ class PostsController < ApplicationController
     @posts = Post.all.order(created_at: :desc)
   end
 
+  def show
+    @posts = Post.where(:user_id => current_user.id)
+  end
+
   private
   def post_params
     params.require(:post).permit(:body)
   end
+
 end
