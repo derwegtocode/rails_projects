@@ -9,11 +9,12 @@
       <div class="navbar-nav">
         
         <% if user_signed_in? %>
+          <%= link_to "Secrets", posts_path, class:"nav-link active" %>
           <%= link_to "Share a secret", new_post_path, class:"nav-link active" %>
           <%= link_to "My secrets", show_path, class:"nav-link active" %>
           <%= button_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-outline-secondary" %>
         <% else %>
-          <%= link_to "Posts", posts_path, class:"nav-link active" %>
+          <%= link_to "Secrets", posts_path, class:"nav-link active" %>
           <%= link_to "Sign in", new_user_session_path, class:"nav-link active" %>
           <%= link_to "Sign up", new_user_registration_path, class:"nav-link active" %>
         <% end %>
