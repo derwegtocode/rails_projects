@@ -4,3 +4,5 @@ The projects will be less and less explicit about how to achieve their goals, si
 If you’d like to challenge yourself, don’t even follow the steps below, just go ahead and build the app!
 
 Link to the project on TOP: https://www.theodinproject.com/lessons/ruby-on-rails-members-only
+
+Link to running app: https://members-only-u2ng.onrender.com/
