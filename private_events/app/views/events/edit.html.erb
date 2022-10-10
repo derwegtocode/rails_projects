@@ -1,10 +1,17 @@
-<h1>Editing event</h1>
+<%= render "shared/event_errors" %>
+<div  class="d-block mx-auto w-50">
+  </br>
+  </br>
+  <div class="mx-auto"> 
+    <h1>Editing event</h1>
 
-<%= render "form", event: @event %>
+    <%= render "form", event: @event %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Show this event", @event %> |
-  <%= link_to "Back to events", events_path %>
+    <div>
+      <%= link_to "Show this event", @event, class:"btn btn-dark" %> |
+      <%= link_to "Back to events", events_path, class:"btn btn-dark" %>
+    </div>
+  </div>
 </div>

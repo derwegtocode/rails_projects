@@ -1,17 +1,35 @@
 <div id="<%= dom_id event %>">
-  <p>
-    <strong>Title:</strong>
-    <%= event.title %>
-  </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= event.location %>
-  </p>
-
-  <p>
-    <strong>Date:</strong>
-    <%= event.date %>
-  </p>
-
+  <div class="card text-bg-dark mb-3 text-center" style="max-width: 18rem;">
+    <div class="card-header">
+      <strong>Host:</strong>
+      <%= User.find_by_id(event.creator_id).username %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">
+        <strong>Title:</strong>
+        <%= event.title %>
+      </h5>
+      <p class="card-text">
+        <strong>Location:</strong>
+        <%= event.location %>
+        </br>
+        <strong>Date:</strong>
+        <%= event.date %>
+      </p>
+      <% unless current_page?(event) %>
+        <p>
+          <%= link_to "Show this event", event, class:"btn btn-light" %>
+        </p>
+      <% end %>
+      <% if user_signed_in? %>
+        <% if current_page?(event) && (current_user.id == event.creator_id) %>
+          <%= link_to "Edit this event", edit_event_path(@event), class:"btn btn-light" %> 
+          </br>
+          </br>
+          <%= button_to "Destroy this event", @event, method: :delete, class:"btn btn-light" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
