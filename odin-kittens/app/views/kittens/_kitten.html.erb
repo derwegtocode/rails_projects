@@ -1,0 +1,13 @@
+<div>
+<span><p><strong>Name: </strong></p><%= kitten.name %></span>
+<br>
+<span><p><strong>Age: </strong></p><%= kitten.age %></span>
+<br>
+<span><p><strong>Softness: </strong></p><%= kitten.softness %></span>
+<br>
+<span><p><strong>Cuteness: </strong></p><%= kitten.cuteness %></span>
+<br>
+<%= link_to "Edit this kitten", edit_kitten_path(kitten) %>
+<br>
+<%= button_to "Destroy this kitten", kitten_path(kitten), method: :destroy, data: { turbo_confirm: 'Are you sure?' } %>
+</div>
