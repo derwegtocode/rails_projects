@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
 
   has_many :events, foreign_key: "creator_id"
-  has_many :events_attendance, foreign_key: :event_attendee_id
-  has_many :attended_events, through: :created_events, source: :event
+  has_many :events_attendance
+  has_many :attended_events, through: :events_attendance, source: :event
 
 end

@@ -5,18 +5,37 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        
-        <% if user_signed_in? %>
-          <%= link_to "Create an event", new_event_path, class:"nav-link active" %>
-          <%= link_to "My events", users_events_path, class:"nav-link active" %>
-          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-outline-secondary" %>
-        <% else %>
-          <%= link_to "Sign in", new_user_session_path, class:"nav-link active" %>
-          <%= link_to "Sign up", new_user_registration_path, class:"nav-link active" %>
-        <% end %>
 
-      </div>
+      
+      <% if user_signed_in? %>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to "Create an event", new_event_path, class:"nav-link active" %>
+            </li>
+          <li class="nav-item">
+            <%= link_to "My events", users_events_path, class:"nav-link active" %>
+          </li>
+        </ul>
+        <ul class="nav justify-content-end">
+          <li class="nav-item me-3"> 
+            <div class="navbar-text"> Welcome, <%=  current_user.username %> </div>
+          </li>
+          <li class="nav-item me-3">
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-outline-secondary" %>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to "Sign in", new_user_session_path, class:"nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, class:"nav-link active" %>
+          </li>
+        </ul>
+      <% end %>
+
+
     </div>
   </div>
 </nav>

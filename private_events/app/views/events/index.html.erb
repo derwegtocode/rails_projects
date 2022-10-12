@@ -1,12 +1,29 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Events</h1>
-
-<div id="events">
-  <% @events.each do |event| %>
+<h1><strong>Events</strong></h1>
+<br>
+<br>
+<div id="events" class="row justify-content-center" >
+<h3><strong>Upcoming Events</strong></h3>
+<br>
+<br>
+<% @events.upcoming_events.each do |event| %>
+  <div class="col-sm-3">
     <%= render event %>
-    
-  <% end %>
+  </div>
+<% end %>
+
+</div>
+<br>
+<br>
+<div id="events" class="row justify-content-center" >
+<h3><strong>Past Events</strong></h3>
+<br>
+<br>
+<% @events.past_events.each do |event| %>
+  <div class="col-sm-3">
+    <%= render event %>
+  </div>
+<% end %>
+
 </div>
 
 

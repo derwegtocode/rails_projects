@@ -1,27 +1,28 @@
-
-  <div class="container card align-items-center justify-content-center f-direction-column">
-    <% current_user.events.each do |event| %>
-        <div class="card text-bg-dark mb-3 text-center" style="max-width: 18rem;">
-          <div class="card-header">
-            <strong>Host:</strong>
-            <%= User.find_by_id(event.creator_id).username %>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">
-              <strong>Title:</strong>
-              <%= event.title %>
-            </h5>
-            <p class="card-text">
-              <strong>Location:</strong>
-              <%= event.location %>
-              </br>
-              <strong>Date:</strong>
-              <%= event.date %>
-            </p>
-            <p>
-              <%= link_to "Show this event", event, class:"btn btn-light" %>
-            </p>
-          </div>
-        </div>
-    <% end %>
+<div class="justify-content-space-between row">
+  <div class="card align-items-center justify-content-center col-sm">
+    <br>
+    <h2>Hosting:</h2>
+      <% current_user.events.upcoming_events.each do |event| %>
+        <%= render "users/show_event_user", event: event %>
+      <% end %>  
+      <br>
+      <h2>Hosted:</h2>
+      <% current_user.events.past_events.each do |event| %>
+        <%= render "users/show_event_user", event: event %>
+      <% end %>
   </div>
+  <div class="card align-items-center justify-content-center col-sm">
+    <br>
+    <h2>Attending:</h2>
+    <% current_user.attended_events.upcoming_events.each do |event| %>
+      <%= render "users/show_event_user", event: event %>
+    <% end %>
+    <br>
+    <h2>Attended:</h2>
+    <% current_user.attended_events.past_events.each do |event| %>
+      <%= render "users/show_event_user", event: event %>
+    <% end %>    
+  </div>
+</div>
+
+

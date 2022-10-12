@@ -1,0 +1,25 @@
+<div class="card text-bg-dark mb-3 text-center" style="max-width: 18rem;">
+  <div class="card-header">
+    <strong>Host:</strong>
+    <%= User.find_by_id(event.creator_id).username %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">
+      <strong>Title:</strong>
+      <%= event.title %>
+    </h5>
+    <p class="card-text">
+      <strong>Location:</strong>
+      <%= event.location %>
+      </br>
+      <strong>Date:</strong>
+      <%= event.date %>
+    </p>
+    <p>
+      <%= link_to "Show this event", event, class:"btn btn-light" %>
+    </p>
+  </div>
+</div>
+
+
+

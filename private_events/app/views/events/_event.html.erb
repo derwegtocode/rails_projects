@@ -21,12 +21,25 @@
           <%= link_to "Show this event", event, class:"btn btn-light" %>
         </p>
       <% end %>
-      <% if user_signed_in? %>
-        <% if current_page?(event) && (current_user.id == event.creator_id) %>
-          <%= link_to "Edit this event", edit_event_path(@event), class:"btn btn-light" %> 
-          </br>
-          </br>
-          <%= button_to "Destroy this event", @event, method: :delete, class:"btn btn-light" %>
+      <% if current_page?(event) %>
+        <strong>The following users will be attending:</strong>
+        <br>
+        <% @event.attendees.each do |attendee| %>
+          <%= attendee.username %>
+        <% end %>
+        <br>
+        <% if user_signed_in? %>
+          <% if current_user.id == event.creator_id %>
+            <%= link_to "Edit this event", edit_event_path(@event), class:"btn btn-light" %> 
+            </br>
+            </br>
+            <%= button_to "Destroy this event", @event, method: :delete, class:"btn btn-light", data: { turbo_confirm: 'Are you sure?' } %>
+          <% elsif event.creator_id != current_user.id && !event.attendees.include?(current_user) %>
+            <%= button_to "Attend this event", create_attending_event_path(:user_id => current_user.id, :id => event.id), method: :post, class:"btn btn-light" %>
+          <% elsif event.creator_id != current_user.id && event.attendees.include?(current_user) %>
+            <p><strong>You have registered for this event.</strong></p>
+            <%= button_to "Deregister from this event", destroy_attending_event_path(:user_id => current_user.id, :id => event.id), method: :delete, data: { turbo_confirm: "Are you sure?"}, class:"btn btn-danger" %>
+          <% end %>
         <% end %>
       <% end %>
     </div>
