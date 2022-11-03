@@ -6,3 +6,5 @@ If you’d like to challenge yourself, don’t even follow the steps below, just
 Link to the project on TOP: https://www.theodinproject.com/lessons/ruby-on-rails-members-only
 
 Link to running app: https://members-only-u2ng.onrender.com/
+
+Silence icon by Eucalyp - Flaticon: https://www.flaticon.com/free-icons/silence
